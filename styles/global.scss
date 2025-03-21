@@ -1,0 +1,27 @@
+@use "tailwindcss";
+@use "./fonts.scss";
+@use "./vars.scss" as *;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background: $bg_color_light;
+  color: $primary_color_light;
+  font-family: $font_sans;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: $bg_color_dark;
+    color: $primary_color_dark;
+  }
+}
