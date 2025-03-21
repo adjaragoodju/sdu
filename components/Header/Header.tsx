@@ -26,56 +26,57 @@ export function Header() {
   return (
     <header className="header">
       <div className="header_content">
-        <div className="header_content_left">
-          <div className="header_logo">
+        <nav className="header_content_left">
+          <div className="logo">
             <a href="/">
               <img
-                src="/images/logo.svg"
+                src="/images/logo_dark.svg"
                 alt="SDU GOV"
               />
             </a>
           </div>
-          <nav className="header_nav">
-            <ul>
-              <li>
-                <a
-                  href="#"
-                  className={activeSection === "" ? "active" : ""}
-                >
-                  Главная
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#access"
-                  className={activeSection === "access" ? "active" : ""}
-                >
-                  Получить доступ
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  className={activeSection === "projects" ? "active" : ""}
-                >
-                  Текущие проекты
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#cks"
-                  className={activeSection === "cks" ? "active" : ""}
-                >
-                  ЦКС
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+          <ul className="header_links">
+            <li>
+              <a
+                href="#"
+                className={activeSection === "" ? "active" : ""}
+              >
+                Главная
+              </a>
+            </li>
+            <li>
+              <a
+                href="#access"
+                className={activeSection === "access" ? "active" : ""}
+              >
+                Получить доступ
+              </a>
+            </li>
+            <li>
+              <a
+                href="#projects"
+                className={activeSection === "projects" ? "active" : ""}
+              >
+                Текущие проекты
+              </a>
+            </li>
+            <li>
+              <a
+                href="#cks"
+                className={activeSection === "cks" ? "active" : ""}
+              >
+                ЦКС
+              </a>
+            </li>
+          </ul>
+        </nav>
         <div className="header_content_right">
-          <div className="header_content_right_registration">
-            <a href="/register">Регистрация</a>
-          </div>
+          <a
+            className="registration_button"
+            href="/register"
+          >
+            Регистрация
+          </a>
         </div>
       </div>
     </header>

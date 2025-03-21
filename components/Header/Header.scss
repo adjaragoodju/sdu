@@ -1,5 +1,10 @@
+@use "../../styles/vars.scss" as *;
+
 .header {
+  font-size: 16px;
   padding: 24px 0;
+  border-bottom: 2px solid $header_border_bottom;
+
   &_content {
     display: flex;
     justify-content: space-between;
@@ -9,6 +14,42 @@
     &_right {
       display: flex;
       align-items: center;
+      gap: 52px;
+    }
+  }
+
+  &_links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+
+    a {
+      color: $secondary_color;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.3s;
+
+      &.active {
+        color: rgba($color: $primary_color, $alpha: 0.6);
+      }
+
+      &:hover {
+        color: $primary_color;
+      }
+    }
+  }
+
+  .registration_button {
+    border-radius: 12px;
+    background-color: $accent_color;
+    padding: 16px 22px;
+    font-weight: bold;
+    transition: all 0.3s;
+
+    &:hover {
+      opacity: 0.8;
     }
   }
 }

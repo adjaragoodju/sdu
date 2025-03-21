@@ -4,6 +4,7 @@
 
 * {
   box-sizing: border-box;
+  background-clip: padding-box;
   padding: 0;
   margin: 0;
 }
@@ -13,15 +14,20 @@ a {
   color: inherit;
 }
 
+button {
+  cursor: pointer;
+}
+
 body {
-  background: $bg_color_light;
-  color: $primary_color_light;
+  line-height: 1.2;
+
+  background: $bg_color;
+  color: $primary_color;
   font-family: $font_sans;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background: $bg_color_dark;
-    color: $primary_color_dark;
-  }
+section {
+  padding: 0 80px;
+  padding-top: 40px;
+  padding-bottom: 80px;
 }

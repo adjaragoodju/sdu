@@ -27,11 +27,11 @@ async function convertFonts() {
         const woff2Buffer = ttf2woff2(ttfBuffer);
         await fs.promises.writeFile(outputWoff2Path, woff2Buffer);
 
-        console.log(`✅ Converted: ${file} → WOFF & WOFF2`);
+        console.log(`Converted: ${file} → WOFF & WOFF2`);
       }
     }
   } catch (error) {
-    console.error("❌ Error converting fonts:", error);
+    console.error("Error converting fonts:", error);
   }
 }
 

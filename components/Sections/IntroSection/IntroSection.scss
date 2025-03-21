@@ -1,0 +1,49 @@
+@use "../../../styles/vars.scss" as *;
+
+.intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+
+  &_content {
+    max-width: 49ch;
+  }
+
+  &_title {
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  &_description {
+    font-size: 18px;
+    color: $secondary_color;
+    margin-bottom: 40px;
+  }
+
+  &_button {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    gap: 24px;
+    button {
+      border: 1px solid $primary_color;
+      border-radius: 12px;
+      background-color: transparent;
+      padding: 16px 22px;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        background-color: $primary_color;
+        color: $bg_color;
+      }
+    }
+
+    p {
+      font-weight: 400;
+      color: $secondary_color;
+    }
+  }
+}
