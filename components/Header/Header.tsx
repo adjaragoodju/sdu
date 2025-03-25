@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import "./Header.scss";
+import { Container } from "../Container/Container";
 
 export function Header() {
   const [activeSection, setActiveSection] = useState("");

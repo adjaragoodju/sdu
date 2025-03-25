@@ -1,0 +1,34 @@
+.carousel-container {
+  text-align: center;
+  padding: 20px 0;
+  background-color: var(--secondary-color);
+}
+
+h2 {
+  font-size: 20px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.logo-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  height: 50px;
+  max-width: 100%;
+  filter: brightness(80%);
+  transition: filter 0.3s ease-in-out;
+
+  &:hover {
+    filter: brightness(100%);
+  }
+}
