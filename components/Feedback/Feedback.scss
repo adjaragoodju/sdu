@@ -1,0 +1,82 @@
+@use "../../styles/vars.scss" as *;
+
+.feedback_form {
+  color: $secondary_color;
+
+  label {
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  input {
+    border-radius: 16px;
+    border: 1px solid $secondary_color;
+    padding: 24px 32px;
+    font-size: 24px;
+  }
+
+  textarea {
+    height: 100%;
+    border-radius: 16px;
+    border: 1px solid $secondary_color;
+    padding: 24px 32px;
+    font-size: 24px;
+    resize: none;
+  }
+
+  &_inputs {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  &_left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 35%;
+  }
+
+  &_item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  &_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+
+    & > button {
+      width: 50%;
+      border: 2px solid $accent_color;
+      padding: 24px 32px;
+      font-size: 24px;
+      cursor: pointer;
+      border-radius: 16px;
+      transition: all 0.3s;
+    }
+  }
+
+  &_submit {
+    background-color: $accent_color;
+    color: $primary_color;
+
+    &:hover {
+      background-color: transparent;
+      color: $accent_color;
+    }
+  }
+
+  &_reset {
+    color: $accent_color;
+
+    &:hover {
+      background-color: $accent_color;
+      color: $primary_color;
+    }
+  }
+}

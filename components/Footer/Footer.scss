@@ -1,0 +1,57 @@
+@use "../../styles/vars.scss" as *;
+
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  &_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+
+  &_left {
+    display: flex;
+    gap: 60px;
+  }
+}
+
+.company_info {
+  display: flex;
+  gap: 24px;
+  p {
+    font-size: 8px;
+    color: $secondary_color;
+  }
+
+  .nitec_info,
+  .sdu_info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    img {
+      height: 40px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .vertical_line {
+    border-radius: 2px;
+    width: 2px;
+    height: 60%;
+    background-color: $secondary_color;
+  }
+}
+
+.social_links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  &_icons {
+    display: flex;
+    gap: 10px;
+  }
+}

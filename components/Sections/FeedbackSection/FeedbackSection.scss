@@ -1,0 +1,11 @@
+@use "../../../styles/vars.scss" as *;
+.feedback {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  &_title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+  background-color: $tools_bg_color;
+}
