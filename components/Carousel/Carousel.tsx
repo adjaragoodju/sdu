@@ -1,15 +1,15 @@
+"use client";
+import { Logo } from "@/utils/getCarouselLogos";
 import { motion } from "framer-motion";
-
-type Logo = { src: string; alt: string };
-
+import "./Carousel.scss";
 export function Carousel({ logos }: { logos: Logo[] }) {
   return (
-    <div className="relative w-full overflow-hidden py-10">
-      <div className="flex relative overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-10 before:bg-gradient-to-r before:from-white before:to-transparent after:absolute after:right-0 after:top-0 after:h-full after:w-10 after:bg-gradient-to-l after:from-white after:to-transparent">
+    <div className="motion-container relative w-full overflow-hidden py-16">
+      <div className="flex relative overflow-hidden">
         <motion.div
           className="flex flex-none gap-16 pr-16"
           initial={{ translateX: 0 }}
-          animate={{ translateX: "-50%" }}
+          animate={{ translateX: "-51%" }}
           transition={{
             duration: 10,
             ease: "linear",
@@ -24,7 +24,7 @@ export function Carousel({ logos }: { logos: Logo[] }) {
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className="h-12 w-auto max-w-none grayscale hover:grayscale-0 transition duration-300"
+                className="h-12 w-auto max-w-none grayscale hover:grayscale-0 transition duration-400"
                 loading="lazy"
               />
             </div>

@@ -1,4 +1,11 @@
 @use "../../../styles/vars.scss" as *;
 .tools {
-  background-color: $secondary_color;
+  background-color: $tools_bg_color;
+  padding-top: 32px;
+  padding-bottom: 20px;
+  &_title {
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
 }
