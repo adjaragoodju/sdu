@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { useTheme } from "@/hooks/useTheme";
 import { Container } from "../Container/Container";
 import "./Footer.scss";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export const Footer = () => {
+  const { t } = useTranslation();
   const { theme } = useTheme();
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -26,9 +28,11 @@ export const Footer = () => {
                   />
                 )}
                 <p>
-                  Акционерное общество <br /> «Национальные информационные технологии»
+                  {t("footer.company_1_1")} <br /> {t("footer.company_1_2")}
                 </p>
-                <p>© 2024 г. Все права защищены</p>
+                <p>
+                  {t("footer.company_2")}
+                </p>
               </div>
               <div className="vertical_line"></div>
               <div className="sdu_info">
@@ -39,9 +43,11 @@ export const Footer = () => {
                   />
                 )}
                 <p>
-                  Акционерное общество <br /> «Национальные информационные технологии»
+                  {t("footer.company_1_1")} <br /> {t("footer.company_1_2")}
                 </p>
-                <p>© 2024 г. Все права защищены</p>
+                <p>
+                  {t("footer.company_2")}
+                </p>
               </div>
             </div>
 
@@ -50,17 +56,16 @@ export const Footer = () => {
                 <div className="contact_location">
                   <img src="/images/contacts/map_icon.svg" alt="Map Icon" />
                   <span>
-                    Республика Казахстан, 010000,
-                    г. Астана район Есиль, проспект Мангилик Ел, здание 55/15
+                    {t("footer.address")}
                   </span>
                 </div>
                 <a href="/terms" className="contact_terms">
-                  Пользовательское соглашение
+                  {t("footer.terms")}
                 </a>
               </div>
 
               <div className="contact_call_center">
-                <p>Контактный центр</p>
+                <p> {t("footer.contact_center")} </p>
                 <a href="tel:+77172272727" className="contact_phone">
                   <img src="/images/contacts/phone_icon.svg" alt="Phone" />
                   <span>+7 (7172) 27-27-27</span>
@@ -75,7 +80,7 @@ export const Footer = () => {
           </div>
 
           <div className="social_links">
-            <h4>Мы в социальных сетях</h4>
+            <h4>{t("footer.social_title")}</h4>
             <div className="social_links_icons">
               <a href="#"><img src="/images/social_links/youtube_icon.svg" alt="Youtube" /></a>
               <a href="#"><img src="/images/social_links/facebook_icon.svg" alt="Facebook" /></a>

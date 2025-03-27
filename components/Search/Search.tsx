@@ -1,12 +1,14 @@
 "use client";
 import { useState } from "react";
 import "./Search.scss";
+import { useTranslation } from "@/hooks/useTranslation";
 
 type Props = {
   onSearch: (results: { title: string; link: string }[]) => void;
 };
 
 export const Search = ({ onSearch }: Props) => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -49,10 +51,10 @@ export const Search = ({ onSearch }: Props) => {
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Поиск данных"
+        placeholder={t("developments.placeholder")}
       />
       <button onClick={handleSearch} disabled={loading}>
-        {loading ? "Поиск..." : "Посмотреть"}
+        {loading ? t("developments.search_for") : t("developments.search")}
       </button>
       {error && <div className="search_error">{error}</div>}
     </div>

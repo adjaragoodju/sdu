@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import "./Header.scss";
 import { Container } from "../Container/Container";
 import { useTheme } from "@/hooks/useTheme";
-import { SunIcon } from "@/icons/SunIcon";
-import { MoonIcon } from "@/icons/MoonIcon";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export function Header() {
+  const { t, locale, setLocale } = useTranslation();
   const [activeSection, setActiveSection] = useState("");
   const { theme, toggleTheme } = useTheme();
 
@@ -57,7 +57,7 @@ export function Header() {
                   href="#"
                   className={activeSection === "" ? "active" : ""}
                 >
-                  Главная
+                  {t("header.home")}
                 </a>
               </li>
               <li>
@@ -65,7 +65,7 @@ export function Header() {
                   href="#access"
                   className={activeSection === "access" ? "active" : ""}
                 >
-                  Получить доступ
+                  {t("header.access")}
                 </a>
               </li>
               <li>
@@ -73,7 +73,7 @@ export function Header() {
                   href="#projects"
                   className={activeSection === "projects" ? "active" : ""}
                 >
-                  Текущие проекты
+                  {t("header.projects")}
                 </a>
               </li>
               <li>
@@ -81,21 +81,45 @@ export function Header() {
                   href="#cks"
                   className={activeSection === "cks" ? "active" : ""}
                 >
-                  ЦКС
+                  {t("header.cks")}
                 </a>
               </li>
             </ul>
           </nav>
           <div className="header_content_right">
             {/* <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle theme">
-              {hasMounted ? (
-                theme === "light" ? <SunIcon /> : <MoonIcon />
-              ) : (
-                <SunIcon />
-              )}
-            </button> */}
+                {hasMounted ? (
+                  theme === "light" ? <SunIcon /> : <MoonIcon />
+                ) : (
+                  <SunIcon />
+                )}
+              </button> */}
 
-            <a className="registration_button" href="/register">Регистрация</a>
+            <div className="language-toggle">
+              <button
+                onClick={() => setLocale("ru")}
+                className={locale === "ru" ? "active" : ""}
+              >
+                RU
+              </button>
+              <button
+                onClick={() => setLocale("en")}
+                className={locale === "en" ? "active" : ""}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLocale("kk")}
+                className={locale === "kk" ? "active" : ""}
+              >
+                KZ
+              </button>
+            </div>
+
+
+            <a className="registration_button" href="/register">
+              {t("header.register")}
+            </a>
           </div>
 
         </div>

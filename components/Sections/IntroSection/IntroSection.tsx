@@ -1,8 +1,11 @@
+"use client";
 import Image from "next/image";
 import "./IntroSection.scss";
 import { Container } from "@/components/Container/Container";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export const IntroSection = () => {
+  const { t } = useTranslation();
   return (
     <section
       id="intro"
@@ -15,16 +18,18 @@ export const IntroSection = () => {
 
             <h1 className="intro_title">Smart Data Ukimet</h1>
             <p className="intro_description">
-              Мы помогаем правительству Республики Казахстан собирать, хранить и
-              анализировать данные из государственных систем в деперсонализированном
-              виде.
+              {t("intro.description_1")}
               <br />
               <br />
-              Создаем продукты для принятия эффективных решений на основе данных.
+              {t("intro.description_2")}
             </p>
             <div className="intro_button">
-              <button>Оставить заявку</button>
-              <p>Разработано АО "НИТ"</p>
+              <button>
+                {t("intro.button")}
+              </button>
+              <p>
+                {t("intro.developed_by")}
+              </p>
             </div>
           </div>
           <div className="intro_image">

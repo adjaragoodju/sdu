@@ -6,14 +6,14 @@ import { SduSection } from "@/components/Sections/SduSection/SduSection";
 import ToolsSectionServer from "@/components/Sections/ToolsSection/ToolsSectionServer";
 
 export default function Home() {
-  return (
-    <>
-      <IntroSection />
-      <ToolsSectionServer />
-      <DevelopmentsSection />
-      <SduSection />
-      <AchievementsSection />
-      <FeedbackSection />
-    </>
-  );
+    return (
+        <>
+            <IntroSection />
+            <ToolsSectionServer />
+            <DevelopmentsSection />
+            <SduSection />
+            <AchievementsSection />
+            <FeedbackSection />
+        </>
+    );
 }

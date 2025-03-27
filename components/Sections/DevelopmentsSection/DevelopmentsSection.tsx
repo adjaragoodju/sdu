@@ -27,9 +27,11 @@ export const DevelopmentsSection = () => {
     <section className="developments" id="developments">
       <Container>
         <div className="developments_content">
-          <h2 className="developments_title">Наши разработки</h2>
+          <h2 className="developments_title">
+            {t("developments.title")}
+          </h2>
           <p className="developments_description">
-            Наши флагманские продукты, используемые высшими государственными органами на ежедневной основе
+            {t("developments.description")}
           </p>
           <Search onSearch={setCards} />
           <div className="developments_cards">
