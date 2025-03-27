@@ -8,9 +8,9 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
-    const API_TOKEN = "suApp8HsRjNwOLWwdAq_Ko7csMY8gvuev6FcLsz9";
+    const API_TOKEN = "YOUR TOKEN";
     const BASE_URL = "https://nocodb-web.sdu.gov.kz/api/v2";
-    const TABLE_ID = "mww0a0qxp9yo6pl";
+    const TABLE_ID = "YOUR TABLE ID";
 
     try {
         const response = await axios.post(
