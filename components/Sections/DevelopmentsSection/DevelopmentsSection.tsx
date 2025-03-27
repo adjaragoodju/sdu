@@ -3,41 +3,42 @@ import { Search } from "@/components/Search/Search";
 import "./DevelopmentsSection.scss";
 import { useState } from "react";
 import { Card } from "@/components/Card/Card";
+import { Container } from "@/components/Container/Container";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export const DevelopmentsSection = () => {
+  const { t } = useTranslation();
   const [cards, setCards] = useState([
     {
       title: "Цифровая карта семьи",
-      link: "https://example.com",
+      link: "https://sdu.data.gov.kz/superset/dashboard/67",
     },
     {
-      title: "Мониториг статусов заявок на оказание государственных услуг",
-      link: "https://example.com",
+      title: "Мониторинг статусов заявок",
+      link: "https://sdu.data.gov.kz/superset/dashboard/70/",
     },
     {
       title: "E-обращения",
-      link: "https://example.com",
+      link: "https://sdu.data.gov.kz/superset/dashboard/369/",
     },
   ]);
+
   return (
-    <section
-      className="developments"
-      id="developments"
-    >
-      <h2 className="developments_title">Наши разработки</h2>
-      <p className="developments_description">
-        Наши флагманские продукты используемые высшими государственными органами
-        на ежедневной основе
-      </p>
-      <Search />
-      <div className="developments_cards">
-        {cards.map((card, index) => (
-          <Card
-            key={index}
-            card={card}
-          />
-        ))}
-      </div>
+    <section className="developments" id="developments">
+      <Container>
+        <div className="developments_content">
+          <h2 className="developments_title">Наши разработки</h2>
+          <p className="developments_description">
+            Наши флагманские продукты, используемые высшими государственными органами на ежедневной основе
+          </p>
+          <Search onSearch={setCards} />
+          <div className="developments_cards">
+            {cards.map((card, index) => (
+              <Card key={index} card={card} />
+            ))}
+          </div>
+        </div>
+      </Container>
     </section>
   );
 };

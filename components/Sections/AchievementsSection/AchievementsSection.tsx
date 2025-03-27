@@ -1,3 +1,4 @@
+import { Container } from "@/components/Container/Container";
 import "./AchievementsSection.scss";
 export const AchievementsSection = () => {
   const achievements = [
@@ -35,26 +36,29 @@ export const AchievementsSection = () => {
       id="achievements"
       className="achievements"
     >
-      <div className="achievements_content">
-        <h2 className="achievements_title">Наши достижения</h2>
-        <div className="achievements_list">
-          {achievements.map((achievement, index) => (
-            <div
-              key={index}
-              className="achievements_item"
-            >
-              <img
-                src={achievement.img}
-                alt="Achievement"
-              />
-              <h3 className="achievements_item_title">{achievement.title}</h3>
-              <p className="achievements_item_description">
-                {achievement.description}
-              </p>
-            </div>
-          ))}
+      <Container>
+        <div className="achievements_content">
+          <h2 className="achievements_title">Наши достижения</h2>
+          <div className="achievements_list">
+            {achievements.map((achievement, index) => (
+              <div
+                key={index}
+                className="achievements_item"
+              >
+                <img
+                  src={achievement.img}
+                  alt="Achievement"
+                />
+                <h3 className="achievements_item_title">{achievement.title}</h3>
+                <p className="achievements_item_description">
+                  {achievement.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </Container>
+
     </section>
   );
 };

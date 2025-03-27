@@ -3,6 +3,11 @@
 .developments {
   text-align: center;
 
+  &_content {
+    padding: 40px 80px;
+
+  }
+
   &_title {
     font-size: 32px;
     font-weight: bold;

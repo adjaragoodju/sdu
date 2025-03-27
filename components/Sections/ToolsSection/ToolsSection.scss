@@ -1,9 +1,15 @@
 @use "../../../styles/vars.scss" as *;
+
 .tools {
+  padding-right: 0;
+  padding-left: 0;
   background-color: $tools_bg_color;
   padding-top: 32px;
   padding-bottom: 20px;
+
+
   &_title {
+    padding: 0 80px;
     font-weight: 400;
     font-size: 24px;
     margin-bottom: 12px;

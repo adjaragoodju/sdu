@@ -3,13 +3,13 @@ import { DevelopmentsSection } from "@/components/Sections/DevelopmentsSection/D
 import { FeedbackSection } from "@/components/Sections/FeedbackSection/FeedbackSection";
 import { IntroSection } from "@/components/Sections/IntroSection/IntroSection";
 import { SduSection } from "@/components/Sections/SduSection/SduSection";
-import { ToolsSection } from "@/components/Sections/ToolsSection/ToolsSection";
+import ToolsSectionServer from "@/components/Sections/ToolsSection/ToolsSectionServer";
 
 export default function Home() {
   return (
     <>
       <IntroSection />
-      <ToolsSection />
+      <ToolsSectionServer />
       <DevelopmentsSection />
       <SduSection />
       <AchievementsSection />

@@ -1,5 +1,6 @@
 import { Feedback } from "@/components/Feedback/Feedback";
 import "./FeedbackSection.scss";
+import { Container } from "@/components/Container/Container";
 
 export const FeedbackSection = () => {
   return (
@@ -7,10 +8,13 @@ export const FeedbackSection = () => {
       id="feedback"
       className="feedback"
     >
-      <div className="feedback_content">
-        <h2 className="feedback_title">Форма обратной связи</h2>
-        <Feedback />
-      </div>
+      <Container>
+        <div className="feedback_content">
+          <h2 className="feedback_title">Форма обратной связи</h2>
+          <Feedback />
+        </div>
+      </Container>
+
     </section>
   );
 };

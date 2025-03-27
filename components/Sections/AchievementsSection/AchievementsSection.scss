@@ -1,12 +1,16 @@
 .achievements {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  padding-top: 120px;
-  padding-bottom: 120px;
-  text-align: center;
+
+  &_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    text-align: center;
+
+  }
 
   &_title {
     font-size: 32px;
@@ -29,6 +33,7 @@
 
     img {
       height: 84px;
+      margin-bottom: 32px;
     }
 
     &_title {

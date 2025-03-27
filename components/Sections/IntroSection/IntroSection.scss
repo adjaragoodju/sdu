@@ -1,15 +1,18 @@
 @use "../../../styles/vars.scss" as *;
 
 .intro {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 40px;
-  padding-top: 80px;
-  padding-bottom: 80px;
 
   &_content {
+    padding: 40px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+
+  &_info {
     max-width: 49ch;
+
   }
 
   &_title {
@@ -30,6 +33,7 @@
     align-items: center;
     font-size: 16px;
     gap: 24px;
+
     button {
       border: 1px solid $primary_color;
       border-radius: 12px;
