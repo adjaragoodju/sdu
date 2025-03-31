@@ -1,6 +1,4 @@
 @use "tailwindcss";
-@use "./fonts.scss";
-@use "./vars.scss" as *;
 
 * {
   box-sizing: border-box;
@@ -26,7 +24,4 @@ button {
 body {
   line-height: 1.2;
 
-  background: $bg_color;
-  color: $primary_color;
-  font-family: $font_sans;
 }

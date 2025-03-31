@@ -1,0 +1,24 @@
+@use "../../../styles/vars.scss" as *;
+
+.nitec {
+
+    background-color: $bg_color;
+
+    &_left {
+        width: 45%;
+    }
+
+    &_title {
+        columns: $primary_color_1;
+        font-size: 50px;
+        font-weight: 700;
+        margin-bottom: 60px;
+    }
+
+    &_description {
+        font-size: 24px;
+        font-weight: 400;
+        margin-bottom: 24px;
+        color: $secondary_color_2;
+    }
+}

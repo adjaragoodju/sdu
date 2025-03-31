@@ -1,0 +1,48 @@
+@use "../../../styles/vars.scss" as *;
+
+.intro {
+    background-color: $bg_color;
+
+    &_content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 52px;
+        padding: 48px 60px;
+    }
+
+    &_title {
+        font-size: 72px;
+        color: $primary_color_1;
+        font-weight: bold;
+        margin-bottom: 24px;
+    }
+
+    &_description {
+        font-size: 24px;
+        color: $secondary_color_1;
+        margin-bottom: 24px;
+        max-width: 60ch;
+    }
+
+    &_button {
+        color: $accent_color_2;
+        border: 2px solid $accent_color_2;
+        font-size: 18px;
+        padding: 16px 32px;
+        border-radius: 12px;
+        font-weight: bold;
+        transition: all 0.3s;
+
+        &:hover {
+            color: $primary_color_1;
+            border: 2px solid $primary_color_1;
+
+            background-color: transparent;
+            opacity: 0.8;
+        }
+    }
+
+}

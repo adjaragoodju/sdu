@@ -1,0 +1,32 @@
+@use "../../styles/vars.scss" as *;
+
+.card {
+  background-color: $tools_bg_color;
+  border-radius: 16px;
+  padding: 24px;
+  height: fit-content;
+  text-align: center;
+
+  &_title {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 24px;
+  }
+
+  &_link {
+    display: block;
+    width: 100%;
+    border: 1px solid $accent_color;
+    border-radius: 12px;
+    padding: 12px 24px;
+    border-color: $accent_color;
+    color: $accent_color;
+    transition: all 0.3s;
+    font-weight: 600;
+
+    &:hover {
+      background-color: $accent_color;
+      color: $primary_color;
+    }
+  }
+}

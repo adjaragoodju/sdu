@@ -1,0 +1,8 @@
+@use "./fonts.scss";
+@use "./vars.scss" as *;
+
+body {
+    background: $bg_color;
+    color: $primary_color;
+    font-family: $font_sans;
+}

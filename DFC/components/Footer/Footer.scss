@@ -1,0 +1,9 @@
+@use "../../styles/vars.scss" as *;
+
+.footer {
+    background-color: $bg_color;
+
+    &_content {
+        padding: 0 40px;
+    }
+}

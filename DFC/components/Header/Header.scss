@@ -1,0 +1,39 @@
+@use "../../styles/vars.scss" as *;
+
+.header {
+    padding: 40px 0;
+    background-color: $bg_color;
+
+    &_content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $primary_color_1;
+        font-weight: 600;
+    }
+
+    &_nav {
+        &_list {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+
+            a {
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: 500;
+                transition: color 0.3s;
+                cursor: pointer;
+
+                &.active {
+                    color: rgba($color: $secondary_color_1, $alpha: 0.6);
+                }
+
+                &:hover {
+                    color: $secondary_color_1;
+                }
+            }
+        }
+    }
+}
