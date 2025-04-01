@@ -12,19 +12,19 @@ export const GovServicesSection = () => {
                     </p>
                     <div className="gov-services_list">
                         <div className="gov-services_item">
-                            <img src="" alt="Service" />
+                            {/* <img src={null} alt="Service" /> */}
                             <span>Пособие многодетной семьи</span>
                         </div>
                         <div className="gov-services_item">
-                            <img src="" alt="Service" />
+                            {/* <img src={null} alt="Service" /> */}
                             <span>Пособие многодетной семьи</span>
                         </div>
                         <div className="gov-services_item">
-                            <img src="" alt="Service" />
+                            {/* <img src={null} alt="Service" /> */}
                             <span>Пособие многодетной семьи</span>
                         </div>
                         <div className="gov-services_item">
-                            <img src="" alt="Service" />
+                            {/* <img src={null} alt="Service" /> */}
                             <span>Пособие многодетной семьи</span>
                         </div>
                     </div>
