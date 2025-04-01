@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     const TABLE_ID = "YOUR TABLE ID";
 
     try {
-        const response = await axios.post(
+        await axios.post(
             `${BASE_URL}/tables/${TABLE_ID}/records`,
             {
                 Name: name,
@@ -29,10 +29,28 @@ export async function POST(req: NextRequest) {
         );
 
         return NextResponse.json({ message: "Success" });
-    } catch (error: any) {
-        return NextResponse.json(
-            { error: error.response?.data || error.message },
-            { status: 500 }
-        );
+    } catch (error: unknown) {
+        console.error("Feedback API error:", error);
+
+        if (axios.isAxiosError(error)) {
+            return NextResponse.json(
+                { error: error.response?.data || error.message || 'An error occurred' },
+                { status: 500 }
+            );
+        }
+
+        else if (error instanceof Error) {
+            return NextResponse.json(
+                { error: error.message || 'An error occurred' },
+                { status: 500 }
+            );
+        }
+
+        else {
+            return NextResponse.json(
+                { error: 'An unknown error occurred' },
+                { status: 500 }
+            );
+        }
     }
 }

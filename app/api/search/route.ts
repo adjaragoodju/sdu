@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
             : [];
 
         return NextResponse.json(results);
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("Search API error:", error);
         return NextResponse.json(
             { error: "Ошибка при поиске. Попробуйте позже." },

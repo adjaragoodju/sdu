@@ -13,7 +13,6 @@ const messagesByLocale: Record<Locale, Record<string, any>> = {
     kk,
 };
 
-
 type TranslationContextType = {
     t: (key: string) => string;
     locale: Locale;
@@ -23,14 +22,24 @@ type TranslationContextType = {
 export const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
 
 export function TranslationProvider({ children }: { children: ReactNode }) {
-    const [locale, setLocale] = useState<Locale>(() => {
-        if (typeof window === "undefined") return defaultLocale;
-        return (localStorage.getItem("locale") as Locale) || defaultLocale;
-    });
+    // Start with defaultLocale for both server and client
+    const [locale, setLocale] = useState<Locale>(defaultLocale);
+    const [isClient, setIsClient] = useState(false);
+
+    // Use useEffect to update locale from localStorage after first render
+    useEffect(() => {
+        setIsClient(true);
+        const savedLocale = localStorage.getItem("locale") as Locale;
+        if (savedLocale && Object.keys(messagesByLocale).includes(savedLocale)) {
+            setLocale(savedLocale);
+        }
+    }, []);
 
     useEffect(() => {
-        localStorage.setItem("locale", locale);
-    }, [locale]);
+        if (isClient) {
+            localStorage.setItem("locale", locale);
+        }
+    }, [locale, isClient]);
 
     function getNestedValue(obj: any, path: string): string | undefined {
         return path.split('.').reduce((acc, key) => acc?.[key], obj);
