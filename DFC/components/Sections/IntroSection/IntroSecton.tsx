@@ -1,19 +1,24 @@
+'use client';
+
+import { useTranslationDFC } from "@/hooks/useTranslationDFC";
 import { Container } from "@/SDU/components/Container/Container";
 import "./IntroSection.scss";
+
 export const IntroSection = () => {
+    const { t, locale } = useTranslationDFC();  // Using locale to force re-render on language change
     return (
         <section className="intro">
             <Container>
                 <div className="intro_content">
-                    <h1 className="intro_title">Цифровая Карта Семьи</h1>
+                    <h1 className="intro_title">
+                        {t("intro.title")}
+                    </h1>
                     <p className="intro_description">
-                        уникальная модель, которая классифицирует семьи по пяти категориям благополучия (от A до E) на основе 100 социально-экономических критериев. Разработанная совместно с ПРООН,
-                        ЦКС использует международную методологию Алкира-Фостера для измерения многомерной бедности.
+                        {t("intro.description")}
                     </p>
-                    <button className="intro_button">Learn More</button>
-
+                    <button className="intro_button">{t("intro.button")}</button>
                 </div>
             </Container>
         </section>
     );
-}
+};

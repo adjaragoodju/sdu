@@ -1,57 +1,61 @@
 'use client';
 
+import { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
 import { defaultLocale, Locale } from '@/locales/i18n';
-import { createContext, ReactNode, useState, useEffect } from 'react';
 
-import ru from "@/locales/ru.json";
-import en from "@/locales/en.json";
-import kk from "@/locales/kk.json";
+import sduRu from '@/locales/ru.json';
+import sduEn from '@/locales/en.json';
+import sduKk from '@/locales/kk.json';
 
-const messagesByLocale: Record<Locale, Record<string, any>> = {
-    ru,
-    en,
-    kk,
+const messages = {
+  ru: sduRu,
+  en: sduEn,
+  kk: sduKk,
 };
 
 type TranslationContextType = {
-    t: (key: string) => string;
-    locale: Locale;
-    setLocale: (locale: Locale) => void;
+  t: (key: string) => string;
+  locale: Locale;
+  setLocale: (locale: Locale) => void;
 };
 
-export const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
+export const TranslationContext = createContext<TranslationContextType>({
+  t: (key) => key,
+  locale: defaultLocale,
+  setLocale: () => {},
+});
 
 export function TranslationProvider({ children }: { children: ReactNode }) {
-    // Start with defaultLocale for both server and client
-    const [locale, setLocale] = useState<Locale>(defaultLocale);
-    const [isClient, setIsClient] = useState(false);
+  const [locale, setLocale] = useState<Locale>(defaultLocale);
 
-    // Use useEffect to update locale from localStorage after first render
-    useEffect(() => {
-        setIsClient(true);
-        const savedLocale = localStorage.getItem("locale") as Locale;
-        if (savedLocale && Object.keys(messagesByLocale).includes(savedLocale)) {
-            setLocale(savedLocale);
-        }
-    }, []);
+  useEffect(() => {
+    const saved = localStorage.getItem('locale') as Locale | null;
+    if (saved && ['ru', 'en', 'kk'].includes(saved)) {
+      setLocale(saved);
+    }
+  }, []);
 
-    useEffect(() => {
-        if (isClient) {
-            localStorage.setItem("locale", locale);
-        }
-    }, [locale, isClient]);
+  useEffect(() => {
+    localStorage.setItem('locale', locale);
+  }, [locale]);
 
-    function getNestedValue(obj: any, path: string): string | undefined {
-        return path.split('.').reduce((acc, key) => acc?.[key], obj);
+  const dictionary = useMemo(() => messages[locale] || {}, [locale]);
+
+  const t = (key: string): string => {
+    const parts = key.split('.');
+    let result: any = dictionary;
+
+    for (const part of parts) {
+      result = result?.[part];
+      if (!result) break;
     }
 
-    const messages = messagesByLocale[locale];
+    return typeof result === 'string' ? result : key;
+  };
 
-    const t = (key: string) => getNestedValue(messages, key) || key;
-
-    return (
-        <TranslationContext.Provider value={{ t, locale, setLocale }}>
-            {children}
-        </TranslationContext.Provider>
-    );
+  return (
+    <TranslationContext.Provider value={{ t, locale, setLocale }}>
+      {children}
+    </TranslationContext.Provider>
+  );
 }

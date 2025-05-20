@@ -1,9 +1,21 @@
 @use "../../styles/vars.scss" as *;
-
+ 
 .footer {
     background-color: $bg_color;
-
+    
+    .logo {
+        width: 150px;
+        height: auto;
+        margin-right: 20px;
+        
+    }
+    
     &_content {
-        padding: 0 40px;
+        color: white;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 }

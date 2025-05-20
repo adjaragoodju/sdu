@@ -65,6 +65,8 @@
         "name_placeholder": "Enter your name",
         "message_placeholder": "Enter your message"
     },
+    
+      
     "footer": {
         "company_1_1": "Joint Stock Company",
         "company_1_2": "“National Information Technologies”",
@@ -76,4 +78,8 @@
         "email": "sdu@nitec.kz",
         "social_title": "We are on social media"
     }
+    
 }
+
+
+

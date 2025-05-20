@@ -1,0 +1,51 @@
+
+.stats_section {
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  .stats_grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 30px;
+  }
+  
+
+
+  
+  .stat_number {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .stat_text {
+    font-size: 16px;
+    color: #555;
+    margin-top: 8px;
+  }
+  
+  .tools_description {
+    margin: 20px auto;
+    font-size: 18px;
+    color: #333;
+    max-width: 600px;
+  }
+  
+  .tools_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .tools_card img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    display: block;
+    margin:  auto;
+  }
+  

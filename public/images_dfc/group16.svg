@@ -1,0 +1,14 @@
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 39">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M.473 32.195s-.473.29-.473.892v2.708c0 .58.204 1.258.656 1.612.452.355 1.613.946 2.872.645 1.258-.312 7.732-4.116 8.27-4.481.538-.365.764-1.171.452-1.73-.312-.559-1.345-1.816-3.41-1.526-2.064.29-3.742.698-5.065.892-1.323.183-3.313 1.01-3.313 1.01l.011-.022z" fill="url(#DNj3OonNX2zna)"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M.624 1.193c.097.892.15 1.644.15 2.17C.731 6.159.258 8.759.387 11.327c.118 2.483.13 20.547.13 20.88 0 .376.472.989 1.881 1.01 1.41.022 2.194-1.16 2.194-1.16s.452-7.082 2.345-27.876c.107-1.171.236-2.611.387-4.18l-6.7 1.204v-.011z" fill="url(#DNj3OonNX2znb)"/>
+  <defs>
+    <linearGradient id="DNj3OonNX2zna" x1="4.582" y1="31.196" x2="6.751" y2="35.313" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#55617D"/>
+      <stop offset="1" stop-color="#363E4F"/>
+    </linearGradient>
+    <linearGradient id="DNj3OonNX2znb" x1="3.904" y1="31.207" x2="3.861" y2="15.689" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBD1BE"/>
+      <stop offset="1" stop-color="#F8B4A8"/>
+    </linearGradient>
+  </defs>
+</svg>

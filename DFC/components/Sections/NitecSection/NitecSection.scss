@@ -1,24 +1,43 @@
 @use "../../../styles/vars.scss" as *;
 
 .nitec {
-
     background-color: $bg_color;
+    position: relative;  // Устанавливаем для родителя, чтобы позиционировать потомки относительно него
+
+    &_content {
+        display: flex;
+        justify-content: space-between;  // Располагаем элементы по краям
+        gap: 20px;
+        padding: 48px 60px;
+    }
 
     &_left {
         width: 45%;
     }
 
     &_title {
-        columns: $primary_color_1;
         font-size: 50px;
         font-weight: 700;
         margin-bottom: 60px;
+        color: #ffffff;
     }
 
     &_description {
         font-size: 24px;
         font-weight: 400;
         margin-bottom: 24px;
-        color: $secondary_color_2;
+        color: #ffffff;
+    }
+
+    .picture {
+            position: absolute;  // Абсолютное позиционирование
+        right: 0;  // Привязываем к правому краю
+        width: 740px;  // Устанавливаем фиксированную ширину для картинки
+        height: auto;  // Сохраняем пропорции
+    }
+
+    .picture img {
+        width: 100%;  // Картинка растягивается на всю ширину блока
+        height: auto;  // Сохраняет пропорции
     }
 }

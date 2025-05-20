@@ -1,6 +1,10 @@
 @use "../../styles/vars.scss" as *;
-
-.header {
+.header_logo img {
+    width: 150px;  /* Установи нужную ширину */
+    height: auto;  /* Автоматическая высота, чтобы сохранить пропорции */
+  }
+  
+  .header {
     padding: 40px 0;
     background-color: $bg_color;
 
@@ -34,6 +38,29 @@
                     color: $secondary_color_1;
                 }
             }
+        }
+    }
+}
+
+.language-toggle {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    button {
+        background: transparent;
+        border: 1px solid $primary_color_1;
+        color: $primary_color_1;
+        padding: 6px 14px;
+        font-weight: 500;
+        font-size: 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background-color: $primary_color_1;
+            color: $bg_color;
         }
     }
 }

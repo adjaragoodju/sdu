@@ -1,0 +1,52 @@
+{ 
+  "test":{
+   "test": " THIS IS DFC"
+
+  },
+
+  "header": {
+    "home": "Smart Data Ukimet"
+  },
+  "intro": {
+    "title": "Digital Family Map",
+    "description": "A unique model that classifies families into five categories of well-being (from A to E) based on 100 socio-economic criteria. Developed in collaboration with UNDP, the Digital Family Map uses the Alkire-Foster methodology to measure multidimensional poverty.",
+    "button": "Learn More"
+  },
+  "nitec": {
+    "title": "NIT JSC – Operator of the National Artificial Intelligence Platform",
+    "description": "On January 23, 2024, NIT JSC was appointed as the operator of the National Artificial Intelligence Platform. Among the key initiatives is the development of the Digital Family Map module for the Government of Kazakhstan.\nThe module tracks real-time changes in the well-being of families across Kazakhstan's regions, determining the key factors that influenced the transition between categories. Using artificial intelligence algorithms, the system creates local support programs to improve well-being, which can be applied by local executive authorities."
+  },
+ "gov_services": {
+    "title": "Proactive Services",
+    "description": "Citizens receive SMS notifications with information about available services, their status, and next steps (if necessary).",
+    "items": {
+      "1": "Child Benefit for Large Families",
+      "2": "Basic Pension Payment",
+      "3": "Disability Benefits",
+      "4": "Survivor Benefits"
+    },
+    "button": "View all proactive services"
+  },
+  "footer": {
+    "text": "NIT JSC © 2024 All rights reserved"
+  },
+  "tools": {
+    "stats": {
+      "proactive": ">3mln",
+      "proactiveText": "proactively provided",
+      "services": ">40",
+      "servicesText": "government services converted to proactive format",
+      "pushNotifications": ">36 mln",
+      "pushNotificationsText": "PUSH notifications sent"
+    },
+    "description": "We use Open-Source tools",
+    "cards": {
+      "tool1": "Tool 1 description",
+      "tool2": "Tool 2 description"
+    }
+  }
+}
+
+
+
+

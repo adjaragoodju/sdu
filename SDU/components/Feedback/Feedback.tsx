@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import axios from "axios";
 import "./Feedback.scss";
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -36,20 +37,32 @@ export const Feedback = () => {
 
     setLoading(true);
 
+    const API_TOKEN = "suApp8HsRjNwOLWwdAq_Ko7csMY8gvuev6FcLsz9";
+    const BASE_URL = "https://nocodb-web.sdu.gov.kz/api/v2";
+    const TABLE_ID = "mww0a0qxp9yo6pl";
+
+    const options = {
+      method: "POST",
+      url: `${BASE_URL}/tables/${TABLE_ID}/records`,
+      headers: {
+        "xc-token": API_TOKEN,
+        "Content-Type": "application/json",
+      },
+      data: {
+        Name: name,
+        Email: email,
+        Description: feedback,
+      },
+    };
+
     try {
-      const res = await fetch("/api/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, feedback }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Ошибка при отправке");
-
+      const response = await axios.request(options);
+      console.log("Данные успешно отправлены:", response.data);
       toast.success("Форма успешно отправлена!");
       resetForm();
-    } catch (err: any) {
-      toast.error(err.message || "Ошибка отправки формы.");
+    } catch (error: any) {
+      console.error("Ошибка при отправке:", error.response ? error.response.data : error.message);
+      toast.error("Ошибка при отправке формы.");
     } finally {
       setLoading(false);
     }
@@ -60,9 +73,7 @@ export const Feedback = () => {
       <div className="feedback_form_inputs">
         <div className="feedback_form_left">
           <div className="feedback_form_item">
-            <label htmlFor="email">
-              {t("feedback.email")}
-            </label>
+            <label htmlFor="email">{t("feedback.email")}</label>
             <input
               type="email"
               id="email"
@@ -72,9 +83,7 @@ export const Feedback = () => {
             />
           </div>
           <div className="feedback_form_item">
-            <label htmlFor="name">
-              {t("feedback.name")}
-            </label>
+            <label htmlFor="name">{t("feedback.name")}</label>
             <input
               type="text"
               id="name"
@@ -85,9 +94,7 @@ export const Feedback = () => {
           </div>
         </div>
         <div className="feedback_form_item">
-          <label htmlFor="message">
-            {t("feedback.message")}
-          </label>
+          <label htmlFor="message">{t("feedback.message")}</label>
           <textarea
             id="message"
             value={feedback}
@@ -105,7 +112,6 @@ export const Feedback = () => {
           {t("feedback.reset")}
         </button>
       </div>
-
     </form>
   );
 };

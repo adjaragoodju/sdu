@@ -1,23 +1,28 @@
+'use client';
+
+import { useTranslationDFC } from "@/hooks/useTranslationDFC";
 import { Container } from "@/SDU/components/Container/Container";
 import "./NitecSection.scss";
 
 export const NitecSection = () => {
+    const { t, locale } = useTranslationDFC();  // Using locale here as well
     return (
         <section className="nitec">
             <Container>
                 <div className="nitec_content">
                     <div className="nitec_left">
-                        <h1 className="nitec_title">АО «НИТ» –
-                            Оператор Национальной платформы искусственного интеллекта
+                        <h1 className="nitec_title">
+                            {t("nitec.title")}
                         </h1>
-                        <p className="nitec_description">23 января 2024 года АО «НИТ» было назначено оператором Национальной платформы искусственного интеллекта. Среди ключевых инициатив – разработка модуля Цифровой карты семьи для Аппарата Правительства РК.
-                            <br />
-                            Модуль в режиме реального времени отслеживает изменения благосостояния семей по районам Казахстана, определяя ключевые факторы, повлиявшие на переход между категориями. Используя алгоритмы искусственного интеллекта, система создает локальные программы поддержки населения для повышения уровня благосостояния, которые могут применяться местными исполнительными органами.
+                        <p className="nitec_description">
+                            {t("nitec.description")}
                         </p>
                     </div>
-
+                    <div className="picture">
+                        <img src="images_dfc/akimat.png" alt="" />
+                    </div>
                 </div>
             </Container>
         </section>
     );
-}
+};

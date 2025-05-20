@@ -1,0 +1,9 @@
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 47">
+  <path d="M.287 1.29c-.355.773-.269 23.082-.28 24.264-.032 2.203.054 19.537.054 19.537s1.065.87 3.205.978c2.15.107 2.882-.677 2.882-.677S7.202 34.269 7.6 31.056c.172-1.386.398-6.437.441-7.447 0 0 2.355-9.725 3.011-17.075.076-.785.398-4.954-.623-6.534C5.352 1.236.276 1.29.276 1.29h.01z" fill="url(#xoikLtMnuIppa)"/>
+  <defs>
+    <linearGradient id="xoikLtMnuIppa" x1="-10.748" y1="62.843" x2="5.061" y2="18.067" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#55617D"/>
+      <stop offset="1" stop-color="#363E4F"/>
+    </linearGradient>
+  </defs>
+</svg>
