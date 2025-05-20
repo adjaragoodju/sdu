@@ -9,16 +9,40 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: "Запрос введен неправильно" }, { status: 400 });
         }
 
-        const { data } = await axios.post("http://localhost:8000/search", { query });
+        // Use your working ML model
+        const ML_MODEL_URL = process.env.ML_MODEL_URL || "http://localhost:8001/search";
+        
+        console.log(`🔍 Searching with ML model: "${query}"`);
+        
+        try {
+            const { data } = await axios.post(ML_MODEL_URL, { 
+                query: query
+            }, {
+                timeout: 10000, // 10 second timeout
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
 
-        const results = Array.isArray(data)
-            ? data.map((item) => ({
-                title: item["Название "] || "Без названия",
-                link: item["ссылка"] || "#",
-            }))
-            : [];
+            console.log(`✅ ML model returned ${data.length} results`);
+            return NextResponse.json(data);
 
-        return NextResponse.json(results);
+        } catch (mlError) {
+            console.error("ML model error:", mlError);
+            
+            // Fallback to mock results if ML model fails
+            const fallbackResults = [
+                {
+                    title: `Результаты для: "${query}"`,
+                    description: "Резервный результат (ML модель недоступна)",
+                    url: "https://sdu.data.gov.kz/superset/dashboard/67",
+                    score: 0.8
+                }
+            ];
+            
+            return NextResponse.json(fallbackResults);
+        }
+
     } catch (error: unknown) {
         console.error("Search API error:", error);
         return NextResponse.json(

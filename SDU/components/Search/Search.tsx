@@ -3,8 +3,15 @@ import { useState } from "react";
 import "./Search.scss";
 import { useTranslation } from "@/hooks/useTranslation";
 
+type SearchResult = {
+  title: string;
+  link: string;
+  score?: number;
+  description?: string;
+};
+
 type Props = {
-  onSearch: (results: { title: string; link: string }[]) => void;
+  onSearch: (results: SearchResult[]) => void;
 };
 
 export const Search = ({ onSearch }: Props) => {
@@ -32,16 +39,28 @@ export const Search = ({ onSearch }: Props) => {
       });
 
       if (!response.ok) {
-        throw new Error("Ошибка получения данных");
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Ошибка получения данных");
       }
 
-      const result = await response.json();
-      onSearch(result);
+      const results: SearchResult[] = await response.json();
+      
+      // Sort results by relevance score if available
+      const sortedResults = results.sort((a, b) => (b.score || 0) - (a.score || 0));
+      
+      onSearch(sortedResults);
     } catch (error) {
-      setError("Ошибка при поиске");
+      const errorMessage = error instanceof Error ? error.message : "Ошибка при поиске";
+      setError(errorMessage);
       console.error("Search error:", error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      handleSearch();
     }
   };
 
@@ -51,12 +70,14 @@ export const Search = ({ onSearch }: Props) => {
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={handleKeyPress}
         placeholder={t("developments.placeholder")}
+        disabled={loading}
       />
-      <button onClick={handleSearch} disabled={loading}>
+      <button onClick={handleSearch} disabled={loading || !searchTerm.trim()}>
         {loading ? t("developments.search_for") : t("developments.search")}
       </button>
-      {error && <div className="search_error">{error}</div>}
+      {error && <div className="search_error" style={{ color: 'red', marginTop: '8px' }}>{error}</div>}
     </div>
   );
 };

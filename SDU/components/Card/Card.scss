@@ -6,11 +6,33 @@
   padding: 24px;
   height: fit-content;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 
   &_title {
     font-size: 24px;
     font-weight: 400;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
+  }
+
+  &_description {
+    font-size: 14px;
+    color: $secondary_color;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    text-align: left;
+    flex-grow: 1;
+  }
+
+  &_score {
+    font-size: 12px;
+    color: $accent_color;
+    font-weight: 600;
+    background-color: rgba($accent_color, 0.1);
+    padding: 4px 8px;
+    border-radius: 8px;
+    margin-bottom: 12px;
   }
 
   &_link {
@@ -23,6 +45,7 @@
     color: $accent_color;
     transition: all 0.3s;
     font-weight: 600;
+    margin-top: auto;
 
     &:hover {
       background-color: $accent_color;

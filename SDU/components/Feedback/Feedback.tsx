@@ -1,9 +1,22 @@
 "use client";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import "./Feedback.scss";
 import { useTranslation } from "@/hooks/useTranslation";
+
+interface FeedbackResponse {
+  id?: string;
+  Name: string;
+  Email: string;
+  Description: string;
+}
+
+interface ErrorResponse {
+  message?: string;
+  error?: string;
+  details?: string;
+}
 
 export const Feedback = () => {
   const [name, setName] = useState("");
@@ -12,7 +25,7 @@ export const Feedback = () => {
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
 
-  const validate = () => {
+  const validate = (): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!name.trim() || !email.trim() || !feedback.trim()) {
       toast.error("Пожалуйста, заполните все поля.");
@@ -25,13 +38,13 @@ export const Feedback = () => {
     return true;
   };
 
-  const resetForm = () => {
+  const resetForm = (): void => {
     setName("");
     setEmail("");
     setFeedback("");
   };
 
-  const sendData = async (e: React.FormEvent<HTMLFormElement>) => {
+  const sendData = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     if (!validate()) return;
 
@@ -42,7 +55,7 @@ export const Feedback = () => {
     const TABLE_ID = "mww0a0qxp9yo6pl";
 
     const options = {
-      method: "POST",
+      method: "POST" as const,
       url: `${BASE_URL}/tables/${TABLE_ID}/records`,
       headers: {
         "xc-token": API_TOKEN,
@@ -56,13 +69,29 @@ export const Feedback = () => {
     };
 
     try {
-      const response = await axios.request(options);
+      const response = await axios.request<FeedbackResponse>(options);
       console.log("Данные успешно отправлены:", response.data);
       toast.success("Форма успешно отправлена!");
       resetForm();
-    } catch (error: any) {
-      console.error("Ошибка при отправке:", error.response ? error.response.data : error.message);
-      toast.error("Ошибка при отправке формы.");
+    } catch (error) {
+      console.error("Ошибка при отправке:", error);
+      
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<ErrorResponse>;
+        const errorMessage = axiosError.response?.data?.message 
+          || axiosError.response?.data?.error 
+          || axiosError.message 
+          || "Неизвестная ошибка";
+        
+        console.error("Детали ошибки:", axiosError.response?.data || axiosError.message);
+        toast.error(`Ошибка при отправке формы: ${errorMessage}`);
+      } else if (error instanceof Error) {
+        console.error("Общая ошибка:", error.message);
+        toast.error(`Ошибка: ${error.message}`);
+      } else {
+        console.error("Неизвестная ошибка:", error);
+        toast.error("Произошла неизвестная ошибка при отправке формы.");
+      }
     } finally {
       setLoading(false);
     }

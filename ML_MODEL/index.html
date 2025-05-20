@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Model Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .result {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>SDU Superset Search</h1>
+
+    <div class="form-container">
+        <label for="query">Enter your query:</label>
+        <input type="text" id="query" name="query" placeholder="Type your query here" style="width: 300px;">
+        <button onclick="performSearch()">Search</button>
+    </div>
+
+    <div class="results" id="results"></div>
+
+    <script>
+        async function performSearch() {
+            const query = document.getElementById('query').value.trim();
+            const resultsDiv = document.getElementById('results');
+
+            // Clear previous results
+            resultsDiv.innerHTML = '';
+
+            if (!query) {
+                resultsDiv.innerHTML = '<p>Please enter a query.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ query })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                if (data.results.length === 0) {
+                    resultsDiv.innerHTML = '<p>No results found.</p>';
+                } else {
+                    data.results.forEach(result => {
+                        const resultDiv = document.createElement('div');
+                        resultDiv.classList.add('result');
+                        resultDiv.innerHTML = `
+                            <a href="${result['ссылка']}" target="_blank">${result['Название ']}</a>
+                        `;
+                        resultsDiv.appendChild(resultDiv);
+                    });
+                }
+            } catch (error) {
+                resultsDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
