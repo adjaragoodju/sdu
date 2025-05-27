@@ -1,85 +1,85 @@
 {
-    "header": {
-        "home": "Home",
-        "access": "Get Access",
-        "projects": "Current Projects",
-        "DFC": "DFC",
-        "register": "Register"
-    },
-    "intro": {
-        "description_1": "We help the government of the Republic of Kazakhstan collect, store, and analyze data from government systems in a depersonalized form.",
-        "description_2": "We create products for effective data-driven decision-making.",
-        "button": "Submit a Request",
-        "developed_by": "Developed by NIT JSC"
-    },
-    "tools": {
-        "title": "We Use Open-Source Tools"
-    },
-    "developments": {
-        "title": "Our Developments",
-        "description": "Our flagship products used daily by high-level government authorities.",
-        "placeholder": "Search data...",
-        "search_for": "Search...",
-        "search": "View",
-        "look_at": "See"
-    },
-    "sdu": {
-        "features_1": "Rapid creation of analytical solutions",
-        "features_2": "Ability to request new solutions",
-        "features_3": "A set of ready-made analytics for business"
-    },
-    "achievements": {
-        "title": "Our Achievements",
-        "items": {
-            "db": {
-                "title": "Smart Data Ukimet connected to 100+ DBs and GIS",
-                "description": "We are connected to more than 100 databases and unified document management systems."
-            },
-            "anonymous_data": {
-                "title": "Data is presented in depersonalized form",
-                "description": "We provide data in depersonalized form, ensuring its security and confidentiality."
-            },
-            "govtech": {
-                "title": "GovTech Prize International Recognition",
-                "description": "Category 'Inclusive Digital Transformation' — 1 out of 1300 projects worldwide."
-            },
-            "undp": {
-                "title": "International Recognition from UNDP",
-                "description": "We ranked in the Top 3 in UNDP Open Source Adaptation."
-            },
-            "global_cio": {
-                "title": "Winner of the Project of the Year 2024 Contest",
-                "description": "Best Project in Analytics and Big Data"
-            }
-        }
-    },
-    "feedback": {
-        "title": "Feedback Form",
-        "email": "Email",
-        "name": "Name",
-        "message": "Message Text",
-        "sending    ": "Sending...",
-        "send": "Send",
-        "reset": "Clear",
-        "email_placeholder": "Enter your email",
-        "name_placeholder": "Enter your name",
-        "message_placeholder": "Enter your message"
-    },
-    
-      
-    "footer": {
-        "company_1_1": "Joint Stock Company",
-        "company_1_2": "“National Information Technologies”",
-        "company_2": "© 2024. All rights reserved",
-        "address": "Republic of Kazakhstan, 010000, Astana city, Yesil district, Mangilik El avenue, building 55/15",
-        "terms": "User Agreement",
-        "contact_center": "Contact Center",
-        "phone": "+7 (7172) 27-27-27",
-        "email": "sdu@nitec.kz",
-        "social_title": "We are on social media"
+  "header": {
+    "home": "Home",
+    "achievements": "Our Achievements",
+    "request": "Submit Request",
+    "DFC": "DFC",
+    "register": "Register"
+  },
+  "intro": {
+    "description_1": "We help the government of the Republic of Kazakhstan collect, store, and analyze data from government systems in a depersonalized form.",
+    "description_2": "We create products for effective data-driven decision-making.",
+    "button_sdu": "Smart Data Ukimet\n(available only in GS ETS)",
+    "button_demo": "Smart Data Ukimet Demo\n(available only in GS ETS)",
+    "developed_by": "Developed by NIT JSC"
+  },
+  "tools": {
+    "title": "We Use Open-Source Tools"
+  },
+  "developments": {
+    "title": "Our Developments",
+    "description": "Our flagship products used daily by high-level government authorities.",
+    "placeholder": "Search data...",
+    "search_for": "Search...",
+    "search": "View",
+    "look_at": "See"
+  },
+  "sdu": {
+    "features_1": "Rapid creation\nof analytical\nsolutions",
+    "features_2": "Ability to request\nnew solutions\ndevelopment",
+    "features_3": "A set of ready-made\nanalytics\nfor business"
+  },
+  "achievements": {
+    "title": "Our Achievements",
+    "items": {
+      "db": {
+        "title": "Smart Data Ukimet connected to 100+ DBs and GIS",
+        "description": "We are connected to more than 100 databases and unified document management systems."
+      },
+      "anonymous_data": {
+        "title": "Data is presented in depersonalized form",
+        "description": "We provide data in depersonalized form, ensuring its security and confidentiality."
+      },
+      "govtech": {
+        "title": "GovTech Prize International Recognition",
+        "description": "Category 'Inclusive Digital Transformation' — 1 out of 1300 projects worldwide."
+      },
+      "undp": {
+        "title": "International Recognition from UNDP",
+        "description": "We ranked in the Top 3 in UNDP Open Source Adaptation."
+      },
+      "global_cio": {
+        "title": "Winner of the Project of the Year 2024 Contest",
+        "description": "Best Project in Analytics and Big Data"
+      },
+      "data_award": {
+        "title": "Data Award 2025",
+        "description": "For success in working with data in the government sector\nFor implementing socially significant initiatives based on data"
+      }
     }
-    
+  },
+  "feedback": {
+    "request_title": "Submit Request for Case Development",
+    "title": "Feedback Form",
+    "email": "Email",
+    "name": "Name",
+    "message": "Message Text",
+    "sending": "Sending...",
+    "send": "Send",
+    "reset": "Clear",
+    "email_placeholder": "Enter your email",
+    "name_placeholder": "Enter your name",
+    "message_placeholder": "Enter your message"
+  },
+  "footer": {
+    "company_1_1": "Joint Stock Company",
+    "company_1_2": "National Information Technologies",
+    "company_2": "© 2024. All rights reserved",
+    "address": "Republic of Kazakhstan, 010000, Astana city, Yesil district, Mangilik El avenue, building 55/15",
+    "terms": "User Agreement",
+    "contact_center": "Contact Center",
+    "phone": "+7 (7172) 27-27-27",
+    "email": "sdu@nitec.kz",
+    "social_title": "We are on social media"
+  }
 }
-
-
-

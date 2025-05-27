@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { useTheme } from "@/hooks/useTheme";
 import { Container } from "../Container/Container";
 import "./Footer.scss";
@@ -22,9 +24,11 @@ export const Footer = () => {
             <div className="company_info">
               <div className="nitec_info">
                 {hasMounted && (
-                  <img
+                  <Image
                     src={`/images/nitec_logo_${theme}.svg`}
                     alt="Nitec Logo"
+                    width={120}
+                    height={40}
                   />
                 )}
                 <p>
@@ -37,9 +41,11 @@ export const Footer = () => {
               <div className="vertical_line"></div>
               <div className="sdu_info">
                 {hasMounted && (
-                  <img
+                  <Image
                     src={`/images/sdu_logo_${theme}.svg`}
                     alt="SDU Logo"
+                    width={120}
+                    height={40}
                   />
                 )}
                 <p>
@@ -54,24 +60,39 @@ export const Footer = () => {
             <div className="contact_info">
               <div className="contact_address">
                 <div className="contact_location">
-                  <img src="/images/contacts/map_icon.svg" alt="Map Icon" />
+                  <Image 
+                    src="/images/contacts/map_icon.svg" 
+                    alt="Map Icon"
+                    width={20}
+                    height={20}
+                  />
                   <span>
                     {t("footer.address")}
                   </span>
                 </div>
-                <a href="/terms" className="contact_terms">
+                <Link href="/terms" className="contact_terms">
                   {t("footer.terms")}
-                </a>
+                </Link>
               </div>
 
               <div className="contact_call_center">
                 <p> {t("footer.contact_center")} </p>
                 <a href="tel:+77172272727" className="contact_phone">
-                  <img src="/images/contacts/phone_icon.svg" alt="Phone" />
+                  <Image 
+                    src="/images/contacts/phone_icon.svg" 
+                    alt="Phone"
+                    width={20}
+                    height={20}
+                  />
                   <span>+7 (7172) 27-27-27</span>
                 </a>
                 <a href="mailto:sdu@nitec.kz" className="contact_mail">
-                  <img src="/images/contacts/mail_icon.svg" alt="Mail" />
+                  <Image 
+                    src="/images/contacts/mail_icon.svg" 
+                    alt="Mail"
+                    width={20}
+                    height={20}
+                  />
                   <span>sdu@nitec.kz</span>
                 </a>
               </div>
@@ -82,9 +103,30 @@ export const Footer = () => {
           <div className="social_links">
             <h4>{t("footer.social_title")}</h4>
             <div className="social_links_icons">
-              <a href="#"><img src="/images/social_links/youtube_icon.svg" alt="Youtube" /></a>
-              <a href="#"><img src="/images/social_links/facebook_icon.svg" alt="Facebook" /></a>
-              <a href="#"><img src="/images/social_links/instagram_icon.svg" alt="Instagram" /></a>
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                <Image 
+                  src="/images/social_links/youtube_icon.svg" 
+                  alt="Youtube"
+                  width={32}
+                  height={32}
+                />
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                <Image 
+                  src="/images/social_links/facebook_icon.svg" 
+                  alt="Facebook"
+                  width={32}
+                  height={32}
+                />
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                <Image 
+                  src="/images/social_links/instagram_icon.svg" 
+                  alt="Instagram"
+                  width={32}
+                  height={32}
+                />
+              </a>
             </div>
           </div>
         </div>

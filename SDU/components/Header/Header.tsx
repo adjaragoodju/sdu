@@ -1,10 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import "./Header.scss";
 import { Container } from "../Container/Container";
 import { useTheme } from "@/hooks/useTheme";
 import { useTranslation } from "@/hooks/useTranslation";
+import { SunIcon } from "@/icons/SunIcon";
+import { MoonIcon } from "@/icons/MoonIcon";
 
 export function Header() {
   const { t, locale, setLocale } = useTranslation();
@@ -29,71 +33,98 @@ export function Header() {
     setHasMounted(true);
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <header className="header">
       <Container>
-
         <div className="header_content">
           <nav className="header_content_left">
             <div className="logo">
-              <a href="/">
+              <Link href="/">
                 {hasMounted ? (
-                  <img
+                  <Image
                     src={theme === "light" ? "/images/logo_light.svg" : "/images/logo_dark.svg"}
                     alt="SDU GOV"
+                    width={180}
+                    height={60}
+                    priority
                   />
                 ) : (
-                  <img
+                  <Image
                     src="/images/logo_dark.svg"
                     alt="SDU GOV"
+                    width={180}
+                    height={60}
+                    priority
                   />
                 )}
-              </a>
+              </Link>
             </div>
             <ul className="header_links">
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/"
                   className={activeSection === "" ? "active" : ""}
                 >
                   {t("header.home")}
-                </a>
+                </Link>
               </li>
               <li>
                 <a
-                  href="#access"
-                  className={activeSection === "access" ? "active" : ""}
+                  href="#achievements"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('achievements');
+                  }}
+                  className={activeSection === "achievements" ? "active" : ""}
                 >
-                  {t("header.access")}
+                  {t("header.achievements")}
                 </a>
               </li>
               <li>
                 <a
-                  href="#projects"
-                  className={activeSection === "projects" ? "active" : ""}
+                  href="#feedback"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('feedback');
+                  }}
+                  className={activeSection === "feedback" ? "active" : ""}
                 >
-                  {t("header.projects")}
+                  {t("header.request")}
                 </a>
               </li>
               <li>
-                <a
+                <Link
                   href="/DFC"
                   className={activeSection === "DFC" ? "active" : ""}
                 >
                   {t("header.DFC")}
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
           <div className="header_content_right">
-            {/* <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle theme">
-                {hasMounted ? (
-                  theme === "light" ? <SunIcon /> : <MoonIcon />
+            <button 
+              onClick={toggleTheme} 
+              className="theme-toggle" 
+              aria-label="Toggle theme"
+            >
+              {hasMounted ? (
+                theme === "light" ? (
+                  <SunIcon className="theme-icon" />
                 ) : (
-                  <SunIcon />
-                )}
-              </button> */}
+                  <MoonIcon className="theme-icon" />
+                )
+              ) : (
+                <SunIcon className="theme-icon" />
+              )}
+            </button>
 
             <div className="language-toggle">
               <button
@@ -116,15 +147,12 @@ export function Header() {
               </button>
             </div>
 
-
-            <a className="registration_button" href="/register">
+            <Link className="registration_button" href="/register">
               {t("header.register")}
-            </a>
+            </Link>
           </div>
-
         </div>
       </Container>
-
     </header>
   );
 }

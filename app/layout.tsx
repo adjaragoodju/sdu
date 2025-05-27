@@ -14,15 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      <html>
-        <body className="antialiased light">
-          <TranslationProvider>
-            {children}
-            <ToastContainer position="top-right" autoClose={3000} />
-          </TranslationProvider>
-        </body>
-      </html>
-    </>
+    <html suppressHydrationWarning>
+      <body className="antialiased">
+        <TranslationProvider>
+          {children}
+          <ToastContainer position="top-right" autoClose={3000} />
+        </TranslationProvider>
+      </body>
+    </html>
   );
 }

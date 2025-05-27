@@ -5,13 +5,6 @@ import axios, { AxiosError } from "axios";
 import "./Feedback.scss";
 import { useTranslation } from "@/hooks/useTranslation";
 
-interface FeedbackResponse {
-  id?: string;
-  Name: string;
-  Email: string;
-  Description: string;
-}
-
 interface ErrorResponse {
   message?: string;
   error?: string;
@@ -28,11 +21,11 @@ export const Feedback = () => {
   const validate = (): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!name.trim() || !email.trim() || !feedback.trim()) {
-      toast.error("Пожалуйста, заполните все поля.");
+      toast.error(t("feedback.validation.all_fields"));
       return false;
     }
     if (!emailRegex.test(email)) {
-      toast.error("Неверный формат почты.");
+      toast.error(t("feedback.validation.invalid_email"));
       return false;
     }
     return true;
@@ -50,47 +43,45 @@ export const Feedback = () => {
 
     setLoading(true);
 
-    const API_TOKEN = "suApp8HsRjNwOLWwdAq_Ko7csMY8gvuev6FcLsz9";
-    const BASE_URL = "https://nocodb-web.sdu.gov.kz/api/v2";
-    const TABLE_ID = "mww0a0qxp9yo6pl";
-
-    const options = {
-      method: "POST" as const,
-      url: `${BASE_URL}/tables/${TABLE_ID}/records`,
-      headers: {
-        "xc-token": API_TOKEN,
-        "Content-Type": "application/json",
-      },
-      data: {
-        Name: name,
-        Email: email,
-        Description: feedback,
-      },
-    };
-
     try {
-      const response = await axios.request<FeedbackResponse>(options);
+      const response = await axios.post('/api/feedback', {
+        name: name.trim(),
+        email: email.trim(),
+        feedback: feedback.trim(),
+      }, {
+        timeout: 10000, // 10 seconds timeout
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
       console.log("Данные успешно отправлены:", response.data);
-      toast.success("Форма успешно отправлена!");
+      toast.success(t("feedback.messages.success"));
       resetForm();
     } catch (error) {
       console.error("Ошибка при отправке:", error);
       
       if (axios.isAxiosError(error)) {
         const axiosError = error as AxiosError<ErrorResponse>;
-        const errorMessage = axiosError.response?.data?.message 
-          || axiosError.response?.data?.error 
-          || axiosError.message 
-          || "Неизвестная ошибка";
         
-        console.error("Детали ошибки:", axiosError.response?.data || axiosError.message);
-        toast.error(`Ошибка при отправке формы: ${errorMessage}`);
+        if (axiosError.code === 'ECONNABORTED') {
+          toast.error(t("feedback.messages.timeout"));
+        } else if (axiosError.response?.status === 400) {
+          toast.error(t("feedback.messages.validation_error"));
+        } else if (axiosError.response?.status === 500) {
+          toast.error(t("feedback.messages.server_error"));
+        } else {
+          const errorMessage = axiosError.response?.data?.message 
+            || axiosError.response?.data?.error 
+            || t("feedback.messages.network_error");
+          toast.error(errorMessage);
+        }
       } else if (error instanceof Error) {
         console.error("Общая ошибка:", error.message);
-        toast.error(`Ошибка: ${error.message}`);
+        toast.error(`${t("feedback.messages.error")}: ${error.message}`);
       } else {
         console.error("Неизвестная ошибка:", error);
-        toast.error("Произошла неизвестная ошибка при отправке формы.");
+        toast.error(t("feedback.messages.unknown_error"));
       }
     } finally {
       setLoading(false);
@@ -109,6 +100,8 @@ export const Feedback = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder={t("feedback.email_placeholder")}
+              disabled={loading}
+              required
             />
           </div>
           <div className="feedback_form_item">
@@ -119,6 +112,8 @@ export const Feedback = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder={t("feedback.name_placeholder")}
+              disabled={loading}
+              required
             />
           </div>
         </div>
@@ -129,15 +124,27 @@ export const Feedback = () => {
             value={feedback}
             onChange={(e) => setFeedback(e.target.value)}
             placeholder={t("feedback.message_placeholder")}
+            disabled={loading}
+            required
+            rows={8}
           />
         </div>
       </div>
 
       <div className="feedback_form_buttons">
-        <button type="submit" className="feedback_form_submit" disabled={loading}>
+        <button 
+          type="submit" 
+          className="feedback_form_submit" 
+          disabled={loading || !name.trim() || !email.trim() || !feedback.trim()}
+        >
           {loading ? t("feedback.sending") : t("feedback.send")}
         </button>
-        <button type="button" onClick={resetForm} className="feedback_form_reset">
+        <button 
+          type="button" 
+          onClick={resetForm} 
+          className="feedback_form_reset"
+          disabled={loading}
+        >
           {t("feedback.reset")}
         </button>
       </div>

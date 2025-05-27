@@ -14,12 +14,11 @@ export const FeedbackSection = () => {
       <Container>
         <div className="feedback_content">
           <h2 className="feedback_title">
-            {t("feedback.title")}
+            {t("feedback.request_title")}
           </h2>
           <Feedback />
         </div>
       </Container>
-
     </section>
   );
 };

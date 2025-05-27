@@ -12,7 +12,6 @@
 
   &_info {
     max-width: 49ch;
-
   }
 
   &_title {
@@ -28,27 +27,51 @@
     margin-bottom: 40px;
   }
 
+  &_buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
   &_button {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
     font-size: 16px;
-    gap: 24px;
+    font-weight: 600;
+    padding: 16px 22px;
+    border-radius: 12px;
+    transition: all 0.3s ease-in;
+    text-decoration: none;
 
-    button {
-      border: 1px solid $primary_color;
-      border-radius: 12px;
-      background-color: transparent;
-      padding: 16px 22px;
-      transition: all 0.3s ease-in;
+    &_primary {
+      background-color: $accent_color;
+      color: $bg_color;
+      border: 1px solid $accent_color;
 
       &:hover {
-        background-color: $primary_color;
-        color: $bg_color;
+        background-color: transparent;
+        color: $accent_color;
       }
     }
 
-    p {
-      color: $secondary_color;
+    .button_main_text {
+      font-size: 16px;
+      font-weight: 600;
     }
+
+    .button_sub_text {
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: 2px;
+      opacity: 0.8;
+    }
+  }
+
+  &_developed {
+    color: $secondary_color;
+    font-size: 16px;
   }
 }

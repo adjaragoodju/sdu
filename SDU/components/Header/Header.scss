@@ -18,6 +18,16 @@
     }
   }
 
+  .logo {
+    display: flex;
+    align-items: center;
+    
+    a {
+      display: flex;
+      align-items: center;
+    }
+  }
+
   &_links {
     display: flex;
     align-items: center;
@@ -32,7 +42,7 @@
       transition: color 0.3s;
 
       &.active {
-        color: rgba($color: $primary_color, $alpha: 0.6);
+        color: rgba($primary_color, 0.6);
       }
 
       &:hover {
@@ -44,9 +54,11 @@
   .registration_button {
     border-radius: 12px;
     background-color: $accent_color;
+    color: white;
     padding: 16px 22px;
     font-weight: bold;
     transition: all 0.3s;
+    text-decoration: none;
 
     &:hover {
       opacity: 0.8;
@@ -57,47 +69,44 @@
     background: none;
     border: none;
     cursor: pointer;
-    padding: 4px;
+    padding: 8px;
     display: flex;
     align-items: center;
-
-    .icon {
-      width: 24px;
-      height: 24px;
-      stroke: currentColor;
-      transition: stroke 0.3s, transform 0.3s;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
+    justify-content: center;
+    margin-right: 16px;
   }
 
+  .theme-icon {
+    width: 24px;
+    height: 24px;
+    color: $primary_color;
+  }
 
-}
+  .language-toggle {
+    display: flex;
+    gap: 8px;
+    margin-right: 16px;
 
-.language-toggle {
-  display: flex;
-  gap: 8px;
-  margin-right: 16px;
+    button {
+      background: transparent;
+      border: 1px solid $secondary_color;
+      color: $secondary_color;
+      padding: 4px 8px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s;
 
-  button {
-    background: transparent;
-    border: 1px solid #ccc;
-    padding: 4px 8px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background 0.2s;
+      &.active {
+        background: $accent_color;
+        color: white;
+        border-color: $accent_color;
+      }
 
-    &.active {
-      background: #007bff;
-      color: white;
-      border-color: #007bff;
-    }
-
-    &:hover {
-      background: #4e4e4e;
+      &:hover:not(.active) {
+        background: $secondary_color;
+        color: $bg_color;
+      }
     }
   }
 }

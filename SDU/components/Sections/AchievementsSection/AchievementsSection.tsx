@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Container } from "@/SDU/components/Container/Container";
 import "./AchievementsSection.scss";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -33,6 +34,11 @@ export const AchievementsSection = () => {
       titleKey: "achievements.items.global_cio.title",
       descriptionKey: "achievements.items.global_cio.description",
     },
+    {
+      img: "/images/achievements/data_award.svg",
+      titleKey: "achievements.items.data_award.title",
+      descriptionKey: "achievements.items.data_award.description",
+    },
   ];
 
   return (
@@ -43,9 +49,21 @@ export const AchievementsSection = () => {
           <div className="achievements_list">
             {achievements.map((achievement, index) => (
               <div key={index} className="achievements_item">
-                <img src={achievement.img} alt="Achievement" />
+                <Image 
+                  src={achievement.img} 
+                  alt="Achievement"
+                  width={84}
+                  height={84}
+                />
                 <h3 className="achievements_item_title">{t(achievement.titleKey)}</h3>
-                <p className="achievements_item_description">{t(achievement.descriptionKey)}</p>
+                <p className="achievements_item_description">
+                  {t(achievement.descriptionKey).split('\n').map((line, index) => (
+                    <span key={index}>
+                      {line}
+                      {index < t(achievement.descriptionKey).split('\n').length - 1 && <br />}
+                    </span>
+                  ))}
+                </p>
               </div>
             ))}
           </div>
